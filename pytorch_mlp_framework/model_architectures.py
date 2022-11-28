@@ -481,7 +481,7 @@ class ResidualConvolutionalBatchNormalizationBlock(nn.Module):
         out = self.layer_dict['conv_1'].forward(out)
         out = self.layer_dict["bn_1"].forward(out)
         # short connection
-        out += out_short
+        out = torch.add(out_short, out)
         out = F.leaky_relu(out)
 
         return out
