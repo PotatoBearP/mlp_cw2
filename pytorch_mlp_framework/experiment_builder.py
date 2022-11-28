@@ -156,7 +156,7 @@ class ExperimentBuilder(nn.Module):
         """
         for name, param in named_parameters:
             print(name)
-            print(param)
+            # print(param)
         all_grads = []
         layers = []
         
