@@ -154,7 +154,7 @@ class ExperimentBuilder(nn.Module):
         Receives the parameters of the model being trained. Returns plot of gradient flow for the given model parameters.
        
         """
-        for name, param in named_parameters():
+        for name, param in named_parameters:
             print(name)
             print(param)
         all_grads = []
