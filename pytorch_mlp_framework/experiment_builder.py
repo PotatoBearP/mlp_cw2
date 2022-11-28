@@ -73,13 +73,13 @@ class ExperimentBuilder(nn.Module):
         print('Total number of linear layers', num_linear_layers)
 
         # 1e-2
-        self.optimizer = optim.Adam(self.parameters(), amsgrad=False,
-                                    weight_decay=weight_decay_coefficient,
-                                    lr=0.01)
+        # self.optimizer = optim.Adam(self.parameters(), amsgrad=False,
+        #                             weight_decay=weight_decay_coefficient,
+        #                             lr=0.01)
 
         # 1e-3
-        # self.optimizer = optim.Adam(self.parameters(), amsgrad=False,
-        #                             weight_decay=weight_decay_coefficient)
+        self.optimizer = optim.Adam(self.parameters(), amsgrad=False,
+                                    weight_decay=weight_decay_coefficient)
 
         self.learning_rate_scheduler = optim.lr_scheduler.CosineAnnealingLR(self.optimizer,
                                                                             T_max=num_epochs,
@@ -154,17 +154,14 @@ class ExperimentBuilder(nn.Module):
         Receives the parameters of the model being trained. Returns plot of gradient flow for the given model parameters.
        
         """
-        for name, param in named_parameters:
-            print(name)
-            # print(param)
+        ########################################
         all_grads = []
         layers = []
-        
-        """
-        Complete the code in the block below to collect absolute mean of the gradients for each layer in all_grads with the             layer names in layers.
-        """
-        ########################################
-        
+        for name, param in named_parameters:
+            # check if grad exits and not bias
+            if (param.requires_grad) and ("bias" not in name):
+                layers.append(name)
+                all_grads.append(param.grad.abs().mean())
         
         ########################################
             
