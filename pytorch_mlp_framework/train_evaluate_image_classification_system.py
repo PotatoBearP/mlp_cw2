@@ -54,6 +54,7 @@ elif args.block_type == 'empty_block':
     processing_block_type = EmptyBlock
     dim_reduction_block_type = EmptyBlock
 else:
+    print(args.block_type)
     raise ModuleNotFoundError
 
 custom_conv_net = ConvolutionalNetwork(  # initialize our network object, in this case a ConvNet
