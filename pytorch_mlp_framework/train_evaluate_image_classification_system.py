@@ -47,6 +47,9 @@ if args.block_type == 'conv_block':
 if args.block_type == 'conv_batch_block':
     processing_block_type = ConvolutionalBatchNormalizationBlock
     dim_reduction_block_type = ConvolutionalDimensionalityReductionBatchNormalizationBlock
+if args.block_type == 'res_conv_batch_block':
+    processing_block_type = ResidualConvolutionalBatchNormalizationBlock
+    dim_reduction_block_type = ConvolutionalDimensionalityReductionBatchNormalizationBlock
 elif args.block_type == 'empty_block':
     processing_block_type = EmptyBlock
     dim_reduction_block_type = EmptyBlock
