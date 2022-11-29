@@ -160,12 +160,12 @@ class ExperimentBuilder(nn.Module):
         for name, param in named_parameters:
             # check if grad exits and not bias
             if (param.requires_grad) and ("bias" not in name):
-                layer_name = name.split('.')
+                layer_name = name.split('.')[-2]
                 layers.append(layer_name)
-                abs_grad = param.grad.abs().mean()
-                all_grads.append(float(abs_grad.item()))
+                abs_grad = param.grad.abs().mean().item()
+                all_grads.append(float(abs_grad))
                 print(abs_grad)
-                print(name)
+                print(layer_name)
         ########################################
             
         
