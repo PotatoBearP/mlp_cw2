@@ -163,7 +163,7 @@ class ExperimentBuilder(nn.Module):
                 layer_name = name.split('.')
                 layers.append(layer_name)
                 abs_grad = param.grad.abs().mean()
-                all_grads.append(float(abs_grad.item))
+                all_grads.append(float(abs_grad.item()))
                 print(abs_grad)
                 print(name)
         ########################################
